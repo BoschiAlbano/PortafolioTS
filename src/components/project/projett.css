@@ -1,0 +1,132 @@
+:root {
+    --swiper-pagination-bottom: 0;
+}
+
+.card {
+    width: 50%;
+    height: 400px;
+    margin: 50px;
+    /* padding: 20px; */
+    /* background-color: white; */
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.1s ease;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card h1,
+.card p {
+    margin: 0;
+    padding: 0;
+    transform: translateZ(50px);
+}
+
+#card-info {
+    background: #0000008a;
+    transition: background 0.5s ease-in;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 13px 13px 10px -7px rgba(0, 0, 0, 0.24);
+}
+
+#img {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+
+    @starting-style {
+        opacity: 0;
+    }
+}
+
+@media (width <= 1400px) {
+    #card-info {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+#card-info:hover {
+    background: #16161c;
+}
+
+.mySwiper {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: visible;
+}
+#swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent;
+
+    overflow: visible;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1.5rem;
+}
+
+.mySwiper .swiper-pagination {
+    --swiper-pagination-color: #c2cf09;
+    --swiper-pagination-bullet-size: 15px;
+    --swiper-pagination-bullet-inactive-color: #c2cf095d;
+    --swiper-pagination-bullet-inactive-opacity: 0.25;
+    --swiper-pagination-bullet-opacity: 0.8;
+    --swiper-pagination-bullet-horizontal-gap: 2px;
+
+    position: relative;
+    margin-top: 0px;
+    /* top: 100%;
+    transform: translateY(100%); */
+    z-index: -1;
+}
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+    --swiper-navigation-size: 30px;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    --swiper-theme-color: #c2cf09;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    position: absolute;
+
+    transition: background 0.2s ease-in-out;
+}
+
+@media (width <= 640px) {
+    .mySwiper .swiper-button-prev,
+    .mySwiper .swiper-button-next {
+        top: 100%;
+        transform: translateY(-100%);
+    }
+}
+
+.mySwiper .swiper-button-prev:hover,
+.mySwiper .swiper-button-next:hover {
+    background: #c2cf0928;
+    transition: background 0.5s ease-in-out;
+}
+
+.mySwiper .swiper-button-prev {
+    left: 20px; /* Ajusta este valor según sea necesario */
+}
+
+.mySwiper .swiper-button-next {
+    right: 20px; /* Ajusta este valor según sea necesario */
+}
