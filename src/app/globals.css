@@ -40,117 +40,47 @@ html {
 
 body {
     background: #16161c;
-    width: 100vw;
-    min-height: 100vh;
+
+    width: 100%;
     height: 100%;
+    min-height: 100svh;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-@media (width <= 900px) {
-    body {
-        padding-top: 5%;
-    }
+    justify-content: start;
+    padding: 3%;
 }
 
 body::-webkit-scrollbar {
-    width: 10px;
-    background: linear-gradient(180deg, #ea546c 0%, #598cbe 100%);
+    width: 5px;
+    background: linear-gradient(180deg, #16161c 0%, #c2cf09 50%, #16161c 100%);
+    display: none;
 }
 
 body::-webkit-scrollbar-thumb {
-    background: rgba(115, 125, 128, 0.76);
+    background: #d1d5db;
     border-radius: 5px;
+}
+
+/* main */
+main {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: auto 70%;
+    gap: 15px;
+}
+
+@media (width <=600px) {
+    main {
+        grid-template-columns: 100%;
+    }
 }
 
 /* App */
 #foto {
     filter: drop-shadow(0 0 0.2rem #c2cf09);
-}
-
-.main-container {
-    width: 90%;
-    min-width: 90vw;
-    height: 90%;
-    min-height: 90vh;
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: 25% auto;
-    gap: 2%;
-    justify-items: center;
-    align-items: center;
-
-    & aside {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 1.5rem;
-        gap: 40px;
-
-        & #icon {
-            background: linear-gradient(145deg, #1b1b1f, #17171a);
-            box-shadow: 2px 1px 10px #0f0f11, -1px -1px 5px #66666d;
-        }
-    }
-
-    & section {
-        width: 100%;
-        height: 100%;
-        border-radius: 1.5rem;
-        overflow: hidden;
-
-        display: flex;
-        flex-direction: column;
-
-        & nav {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-
-            & #title {
-                position: relative;
-                justify-content: center;
-                background: #c2cf09;
-
-                border-radius: 0px 0px 1.5rem 0px;
-
-                & h1 {
-                    opacity: 1;
-                    transition: opacity 1s ease-in-out;
-
-                    @starting-style {
-                        opacity: 0.1;
-                    }
-                }
-            }
-        }
-        & #contenido {
-            /* background: #19191d; */
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
-
-@media (width <= 900px) {
-    .main-container {
-        width: 95%;
-        min-width: 90vw;
-        height: 100%;
-        margin: 0 auto;
-
-        display: grid;
-        grid-template-columns: auto;
-        gap: 2%;
-
-        padding-bottom: 2rem;
-    }
 }
 
 /* NavMenu */
@@ -257,13 +187,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 #card-info {
-    background: #0000008a;
-    transition: background 0.5s ease-in;
-
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-
-    box-shadow: 13px 13px 10px -7px rgba(0, 0, 0, 0.24);
+    background: #16161c;
+    transition: filter 0.5s ease-in;
+    filter: drop-shadow(0 0 0.2rem #c2cf09);
 }
 
 #img {
@@ -275,90 +201,21 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-@media (width <= 1400px) {
-    #card-info {
-        -webkit-backdrop-filter: none;
-        backdrop-filter: none;
+.CardProject {
+    animation: change linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes change {
+    from {
+        scale: 0;
+        opacity: 0;
     }
-}
-
-#card-info:hover {
-    background: #16161c;
-}
-
-.mySwiper {
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: visible;
-}
-#swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: transparent;
-
-    overflow: visible;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 1.5rem;
-}
-
-.mySwiper .swiper-pagination {
-    --swiper-pagination-color: #c2cf09;
-    --swiper-pagination-bullet-size: 15px;
-    --swiper-pagination-bullet-inactive-color: #c2cf095d;
-    --swiper-pagination-bullet-inactive-opacity: 0.25;
-    --swiper-pagination-bullet-opacity: 0.8;
-    --swiper-pagination-bullet-horizontal-gap: 2px;
-
-    position: relative;
-    margin-top: 0px;
-    z-index: -1;
-}
-.mySwiper .swiper-button-prev,
-.mySwiper .swiper-button-next {
-    --swiper-navigation-size: 30px;
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    --swiper-theme-color: #c2cf09;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-
-    position: absolute;
-
-    transition: background 0.2s ease-in-out;
-}
-
-@media (width <= 640px) {
-    .mySwiper .swiper-button-prev,
-    .mySwiper .swiper-button-next {
-        top: 100%;
-        transform: translateY(-100%);
+    to {
+        scale: 1;
+        opacity: 1;
     }
-}
-
-.mySwiper .swiper-button-prev:hover,
-.mySwiper .swiper-button-next:hover {
-    background: #c2cf0928;
-    transition: background 0.5s ease-in-out;
-}
-
-.mySwiper .swiper-button-prev {
-    left: 20px; /* Ajusta este valor según sea necesario */
-}
-
-.mySwiper .swiper-button-next {
-    right: 20px; /* Ajusta este valor según sea necesario */
 }
 
 /* Menu */
@@ -386,7 +243,6 @@ input[id="3"]:checked + #MenuTitle {
 }
 
 /* spinner */
-
 .spinner {
     width: 100%;
     height: 100%;
@@ -428,5 +284,33 @@ input[id="3"]:checked + #MenuTitle {
     }
     100% {
         transform: scale(100%);
+    }
+}
+
+/* Flecha Scroll Top */
+.vibrar:hover {
+    animation: jello-vertical 0.9s linear both;
+}
+@keyframes jello-vertical {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    40% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    50% {
+        transform: scale3d(0.85, 1.15, 1);
+    }
+    65% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+    75% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
     }
 }

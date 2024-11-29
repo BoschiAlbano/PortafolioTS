@@ -1,63 +1,29 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import {
     motion,
     useMotionTemplate,
     useMotionValue,
     useSpring,
 } from "framer-motion";
-import "./projett.css";
-
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
 import { Cards } from "../../utilities/project";
 import { card } from "../../model/projects";
 
 const Proyect = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-
     return (
-        <div className=" flex flex-col justify-start items-center w-full h-full  ">
-            <div className=" w-full sm:h-full h-auto">
-                <Swiper
-                    slidesPerView={1}
-                    spaceBetween={30}
-                    grabCursor={true}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}
-                    className="mySwiper"
-                    style={{ paddingBottom: "3rem" }}
-                    onSlideChange={(e) => setActiveIndex(e.activeIndex)}
-                >
-                    {Cards.map((item, index) => {
-                        return (
-                            <SwiperSlide
-                                key={index}
-                                className=" lg:px-20 px-0 flex flex-row justify-center items-center"
-                                id="swiper-slide"
-                            >
-                                <div className=" relative w-full h-full grid place-content-center overflow-hidden">
-                                    <TiltCard
-                                        card={item}
-                                        isactive={activeIndex === index}
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        );
-                    })}
-                </Swiper>
-            </div>
+        <div className="  h-full w-full flex flex-col justify-center items-center relative">
+            {Cards.map((item, index) => {
+                return (
+                    <div
+                        key={index}
+                        className={`w-full px-[5%] h-full flex flex-col justify-center items-center`}
+                    >
+                        <TiltCard card={item} izq={index % 2 === 0} />
+                    </div>
+                );
+            })}
         </div>
     );
 };
@@ -65,7 +31,7 @@ const Proyect = () => {
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 
-const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
+const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
     const {
         description,
         github,
@@ -77,22 +43,6 @@ const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
     } = card;
 
     const [imgNext, setImgNext] = useState<number>(0);
-
-    // const [fadeOut, setFadeOut] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (isactive) {
-            const intervalId = setInterval(() => {
-                // setFadeOut(true); // Inicia el desvanecimiento
-                setTimeout(() => {
-                    setImgNext((prevIndex) => (prevIndex + 1) % images.length);
-                    // setFadeOut(false); // Termina el desvanecimiento
-                }, 1200); // Duración del desvanecimiento
-            }, 8000);
-
-            return () => clearInterval(intervalId);
-        }
-    }, [images.length, isactive]);
 
     const ref = useRef<HTMLDivElement | null>(null);
 
@@ -131,7 +81,7 @@ const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
 
     return (
         <div
-            className="relative flex flex-col gap-5 w-full h-full"
+            className="relative flex flex-col gap-5 w-[100%] h-full CardProject sm:my-0 my-10 "
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
@@ -148,16 +98,16 @@ const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
                         transform: "translateZ(75px)",
                         transformStyle: "preserve-3d",
                     }}
-                    className="w-full h-full relative flex flex-row-reverse justify-center items-center"
+                    className="w-full sm:h-svh h-auto relative flex flex-row-reverse justify-center items-center"
                 >
                     {images.map((img, index) => {
                         return (
                             <img
                                 key={index}
                                 src={`${img}`}
-                                className={`rounded-[1.5rem] lg:max-h-[85%] max-w-full object-contain aspect-video  ${
+                                className={` rounded-[1.5rem] lg:max-h-[85%] max-w-full object-contain lg:w-[80%] w-[100%]  ${
                                     imgNext == index ? "block" : "hidden"
-                                }`}
+                                } rounded-2xl`}
                                 // loading="lazy"
                                 alt={`${title}`}
                                 id="img"
@@ -169,7 +119,9 @@ const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
 
             <div
                 id="card-info"
-                className="flex flex-col justify-start items-center max-w-[500px] lg:absolute relative lg:bottom-[50%] lg:translate-y-[75%] lg:left-0 rounded-[1.5rem] p-5  gap-4"
+                className={`flex flex-col justify-start items-center max-w-[500px] lg:absolute relative lg:bottom-[50%] lg:translate-y-[75%]  rounded-[1.5rem] p-5  gap-4 ${
+                    izq ? "lg:left-0" : "lg:right-0"
+                }`}
             >
                 <p className=" lg:text-4xl text-2xl text-white lg:mt-6 mt-4">
                     {title}
@@ -250,5 +202,4 @@ const TiltCard = ({ card, isactive }: { card: card; isactive: boolean }) => {
         </div>
     );
 };
-
 export default Proyect;

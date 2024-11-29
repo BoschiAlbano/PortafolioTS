@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { menu } from "../../utilities/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Scroll } from "./scrollUp.component";
 
 const tituto = "Boschi Albano Jose";
 
@@ -17,6 +18,17 @@ const NavComponent = () => {
     useEffect(() => {
         setWidth(firstItemRef?.current?.offsetWidth ?? 0);
         setLeft(firstItemRef?.current?.offsetLeft ?? 0);
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setLeft(firstItemRef?.current?.offsetLeft ?? 0);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Cleanup listener on component unmount
+        return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     const handleclick = ({
@@ -42,8 +54,11 @@ const NavComponent = () => {
     }, []);
 
     return (
-        <nav id="effect">
-            <ul className="sm:w-auto w-full relative flex flex-row justify-evenly items-center sm:gap-6 gap-2 sm:py-4 py-2 sm:px-8 px-4 ">
+        <nav
+            id="effect"
+            className="sm:mb-0 mb-10 sm:fixed relative top-0 right-0 z-50  w-full "
+        >
+            <ul className="sm:w-auto w-full relative flex flex-row sm:justify-end justify-evenly items-center sm:gap-6 gap-2 sm:py-4 py-2 sm:px-8 px-4 ">
                 {menu.map((item, index) => {
                     return (
                         <Link
@@ -84,6 +99,8 @@ const NavComponent = () => {
                     style={{ width: `${whidth}px`, left: `${left}px` }}
                 ></div>
             </ul>
+
+            <Scroll />
         </nav>
     );
 };
