@@ -34,7 +34,9 @@ export default function RootLayout({
                     <Aside />
                     {/* content */}
                     <Providers>
-                        <div className="relative w-full h-full">{children}</div>
+                        <div className="relative w-full h-full flex justify-center items-center">
+                            {children}
+                        </div>
                     </Providers>
                 </main>
             </body>
@@ -45,7 +47,7 @@ export default function RootLayout({
 function Aside() {
     return (
         <div className=" w-full h-ful relative">
-            <aside className=" sticky top-[45px]">
+            <aside className=" sticky top-[60px] flex flex-col justify-center items-center ">
                 <div className="absolute top-0 left-0 m-5 ">
                     <a
                         href="CV.pdf"
@@ -89,18 +91,18 @@ function Aside() {
                     </h1>
                 </div>
                 {/* sobre mi */}
-                <div className=" flex flex-col justify-start items-center gap-4">
-                    <h1 className=" text-gray-300 text-lg py-2 px-6 tracking-wide">
+                <div className=" mt-10 flex flex-col justify-center items-center gap-4">
+                    <h1 className=" text-center text-gray-300 text-lg py-2 px-6 tracking-wide">
                         <strong className=" text-[#c2cf09]">✔</strong> Graduado
                         de la Universidad Tecnológica Nacional - Facultad
                         Regional Tucumán
                     </h1>
-                    <h1 className=" text-gray-300 text-lg py-2 px-6 tracking-wide">
+                    <h1 className="text-center text-gray-300 text-lg py-2 px-6 tracking-wide">
                         <strong className=" text-[#c2cf09]">✔</strong> Soy una
                         persona autodidacta, responsable y comprometida con mi
                         trabajo.
                     </h1>
-                    <h1 className=" text-gray-300 text-lg py-2 px-6 tracking-wide">
+                    <h1 className="text-center text-gray-300 text-lg py-2 px-6 tracking-wide">
                         <strong className=" text-[#c2cf09]">✔</strong>{" "}
                         Constantemente estoy aprendiendo nuevas tecnologias y
                         herramientas para mejorar mis habilidades.

@@ -314,3 +314,22 @@ input[id="3"]:checked + #MenuTitle {
         transform: scale3d(1, 1, 1);
     }
 }
+
+/* Formulario */
+
+.campos {
+    width: 100%;
+    color: #000000;
+    background: #d1d5db;
+    border-radius: 15px;
+    max-height: 50px;
+    height: 100%;
+
+    padding: 10px;
+    outline: none;
+}
+
+#textarea {
+    height: 100%;
+    flex-grow: 1;
+}
