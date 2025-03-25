@@ -48,7 +48,13 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    padding: 3%;
+    padding: 5%;
+
+
+    -webkit-user-select: none; /* Para navegadores basados en WebKit (Chrome, Safari) */
+    -moz-user-select: none;    /* Para Firefox */
+    -ms-user-select: none;     /* Para Internet Explorer/Edge */
+    user-select: none;         /* Estándar */
 }
 
 body::-webkit-scrollbar {
@@ -192,29 +198,17 @@ main {
     filter: drop-shadow(0 0 0.2rem #c2cf09);
 }
 
+img{
+    user-select: none;
+    pointer-events: none; /* Opcional: también deshabilita eventos de ratón */
+}
+
 #img {
     opacity: 1;
     transition: opacity 1s ease-in-out;
 
     @starting-style {
         opacity: 0;
-    }
-}
-
-.CardProject {
-    animation: change linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
-}
-
-@keyframes change {
-    from {
-        scale: 0;
-        opacity: 0;
-    }
-    to {
-        scale: 1;
-        opacity: 1;
     }
 }
 
@@ -333,3 +327,29 @@ input[id="3"]:checked + #MenuTitle {
     height: 100%;
     flex-grow: 1;
 }
+
+
+
+#container_circle{
+    background: #c2cf09c7
+
+}
+
+
+.scale {
+    animation: scale-up-center 1s;
+    /* animation-delay: 1s; */
+}
+@keyframes scale-up-center {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.scale_reverse{opacity: 0;}

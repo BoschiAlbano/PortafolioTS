@@ -11,6 +11,7 @@
     "dependencies": {
         "@types/nodemailer": "^6.4.14",
         "framer-motion": "^11.3.27",
+        "intersection-observer": "^0.12.2",
         "next": "^14.2.18",
         "next-nprogress-bar": "^2.3.15",
         "nodemailer": "^6.9.13",
