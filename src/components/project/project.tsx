@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -11,6 +11,8 @@ import {
 import { Cards } from "../../utilities/project";
 import { card } from "../../model/projects";
 import useNerScreen from "@/hook/useNerScreen";
+import { u } from "framer-motion/client";
+import { set } from "zod";
 
 const Proyect = () => {
   return (
@@ -243,12 +245,14 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
 export default Proyect;
 
 function Barra() {
-  const [scrollProgress, setScrollProgress] = React.useState(0);
-  const [viewportHeight, setViewportHeight] = React.useState(
-    window.innerHeight
-  );
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setViewportHeight(window.innerHeight);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight;
