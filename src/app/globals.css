@@ -140,7 +140,8 @@ main {
 
 /* App */
 #foto {
-  filter: drop-shadow(0 0 0.2rem #c2cf09);
+  /* filter: drop-shadow(0 0 0.2rem #c2cf09); */
+  filter: grayscale(60%) drop-shadow(0 0 0.2rem #c2cf09);
 }
 
 /* CV Button */

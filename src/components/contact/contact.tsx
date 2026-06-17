@@ -6,9 +6,9 @@ const Contact = () => {
   return (
     <div
       id="effect"
-      className="min-h-screen w-full px-4 sm:px-8 lg:px-16 py-12 flex flex-col justify-center items-center"
+      className="min-h-full w-full flex flex-col justify-center items-center"
     >
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10">
+      <div className="w-full max-w-7xl flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10">
         <FooterContact />
         <Formulario />
       </div>

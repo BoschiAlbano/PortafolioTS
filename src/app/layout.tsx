@@ -69,7 +69,7 @@ function Aside() {
       {/* Nom - fac - des */}
       <div className="flex flex-col justify-center items-center gap-8 relative">
         <div className=" flex-grow-0 w-[60%] aspect-square grid place-items-center rounded-[1.5rem] mt-0 ">
-          <div className="absolute -top-5 left-5 sm:fixed sm:top-0 sm:left-0 sm:m-5 z-[51]">
+          <div className="absolute -top-5 left-9 sm:fixed sm:top-0 sm:left-0 sm:m-5 z-[51]">
             <a
               href="CV.pdf"
               target="_blank"
@@ -90,13 +90,13 @@ function Aside() {
             </a>
           </div>
 
-          <div className="absolute  sm:-top-14 -top-5  sm:right-8 right-5 z-[51]">
+          <div className="absolute  sm:-top-14 -top-8  sm:right-8 right-[4.25rem] z-[51]">
             <Svgfoco className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] sm:rotate-[10deg] rotate-[15deg]" />
           </div>
           <img
             src="foto.webp"
             alt=""
-            className=" object-fill w-[90%] aspect-square"
+            className=" object-fill w-[90%] aspect-square rounded-full"
             id="foto"
           />
         </div>
