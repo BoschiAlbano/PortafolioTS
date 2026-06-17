@@ -57,8 +57,12 @@ const NavComponent = () => {
     <nav
       id="effect"
       className="sm:mb-0 mb-10 sm:fixed relative top-0 right-0 z-50  w-full "
+      style={{ pointerEvents: "none" }}
     >
-      <ul className="sm:w-auto w-full relative flex flex-row sm:justify-end justify-evenly items-center sm:gap-6 gap-2 sm:py-4 py-2 sm:px-8 px-4 ">
+      <ul
+        className="sm:w-auto w-full relative flex flex-row sm:justify-end justify-evenly items-center sm:gap-6 gap-2 sm:py-4 py-2 sm:px-8 px-4 "
+        style={{ pointerEvents: "auto" }}
+      >
         {menu.map((item, index) => {
           return (
             <Link
@@ -94,7 +98,9 @@ const NavComponent = () => {
         )}
       </ul>
 
-      <Scroll />
+      <div style={{ pointerEvents: "auto" }}>
+        <Scroll />
+      </div>
     </nav>
   );
 };

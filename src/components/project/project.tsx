@@ -84,7 +84,7 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
     <div
       // @ts-ignore
       ref={elementRef}
-      className={`relative flex flex-col sm:gap-5 gap-10 w-[100%] h-full sm:my-0 my-10 ${
+      className={`relative flex flex-col sm:gap-5 gap-10 w-[100%] h-full sm:my-0 my-10  ${
         isNearScreen ? "scale" : "scale_reverse"
       }`}
       onMouseMove={handleMouseMove}
@@ -103,16 +103,16 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
             transform: "translateZ(75px)",
             transformStyle: "preserve-3d",
           }}
-          className={` w-full sm:h-svh h-auto relative flex flex-row-reverse justify-center items-center `}
+          className={` w-full sm:h-[calc(100svh-10rem)] h-auto relative flex flex-row-reverse justify-center items-center `}
         >
           {images.map((img, index) => {
             return (
               <img
                 key={index}
                 src={`${img}`}
-                className={` rounded-[1.5rem] lg:max-h-[85%] max-w-full object-contain lg:w-[80%] w-[100%]  ${
+                className={` rounded-[1.5rem] w-full lg:w-[80%] aspect-video object-contain object-top shadow-lg ${
                   imgNext == index ? "block" : "hidden"
-                } rounded-2xl`}
+                }`}
                 // loading="lazy"
                 alt={`${title}`}
                 id="img"
@@ -126,8 +126,8 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
         onMouseMove={(e) => e.stopPropagation()}
         onMouseLeave={(e) => e.stopPropagation()}
         id="card-info"
-        className={`flex flex-col justify-start items-center max-w-[500px] lg:absolute relative lg:bottom-[50%] lg:translate-y-[75%]  rounded-[1.5rem] p-5  gap-4 ${
-          izq ? "lg:left-0" : "lg:right-0"
+        className={`flex flex-col justify-start items-center max-w-[500px] lg:absolute relative lg:bottom-8 rounded-[1.5rem] p-5 gap-4 ${
+          izq ? "lg:left-4" : "lg:right-4"
         }`}
       >
         <p className=" lg:text-4xl text-2xl text-white lg:mt-6 mt-4">{title}</p>
@@ -148,7 +148,7 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
           <button
             onClick={() =>
               setImgNext((prevIndex) =>
-                prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
+                prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1,
               )
             }
             className=" w-[22px] h-[22px] p-1 rounded-full bg-[#c2cf09] flex justify-center items-center mr-2"
