@@ -91,7 +91,7 @@ function Aside() {
           </div>
 
           <div className="absolute  -top-5  sm:right-0 right-5 z-[51]">
-            <Svgfoco className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] rotate-[15deg]" />
+            <Svgfoco className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] sm:rotate-[10deg] rotate-[15deg]" />
           </div>
           <img
             src="foto.webp"
