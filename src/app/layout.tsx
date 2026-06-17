@@ -90,13 +90,13 @@ function Aside() {
             </a>
           </div>
 
-          <div className="absolute  -top-5  sm:right-0 right-5 z-[51]">
+          <div className="absolute  sm:-top-14 -top-5  sm:right-8 right-5 z-[51]">
             <Svgfoco className="sm:w-[150px] sm:h-[150px] w-[100px] h-[100px] sm:rotate-[10deg] rotate-[15deg]" />
           </div>
           <img
             src="foto.webp"
             alt=""
-            className=" object-fill w-[100%] aspect-square"
+            className=" object-fill w-[90%] aspect-square"
             id="foto"
           />
         </div>

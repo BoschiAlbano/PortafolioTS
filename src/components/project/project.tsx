@@ -12,7 +12,15 @@ import { Cards } from "../../utilities/project";
 import { card } from "../../model/projects";
 import useNerScreen from "@/hook/useNerScreen";
 
+import ImageViewer from "./ImageViewer";
+
 const Proyect = () => {
+  const [viewerData, setViewerData] = useState<{
+    images: string[];
+    index: number;
+    onIndexChange: (idx: number) => void;
+  } | null>(null);
+
   return (
     <div className="h-full w-full flex flex-col justify-center items-center relative ">
       <Barra />
@@ -23,10 +31,28 @@ const Proyect = () => {
             key={index}
             className={`w-full sm:px-[5%] h-full flex flex-col justify-center items-center px-[3%] `}
           >
-            <TiltCard card={item} izq={index % 2 === 0} />
+            <TiltCard
+              card={item}
+              izq={index % 2 === 0}
+              openViewer={(images, idx, onIndexChange) => {
+                setViewerData({ images, index: idx, onIndexChange });
+              }}
+            />
           </div>
         );
       })}
+
+      {viewerData && (
+        <ImageViewer
+          images={viewerData.images}
+          index={viewerData.index}
+          onClose={() => setViewerData(null)}
+          onIndexChange={(newIndex) => {
+            viewerData.onIndexChange(newIndex);
+            setViewerData({ ...viewerData, index: newIndex });
+          }}
+        />
+      )}
     </div>
   );
 };
@@ -34,7 +60,19 @@ const Proyect = () => {
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 
-const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
+const TiltCard = ({
+  card,
+  izq,
+  openViewer,
+}: {
+  card: card;
+  izq: boolean;
+  openViewer: (
+    images: string[],
+    idx: number,
+    onIndexChange: (idx: number) => void,
+  ) => void;
+}) => {
   const { isNearScreen, elementRef } = useNerScreen({
     distance: "0px",
     once: false,
@@ -108,12 +146,14 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
               <img
                 key={index}
                 src={`${img}`}
-                className={` rounded-[1.5rem] w-full lg:w-[80%] aspect-video object-fill object-top shadow-lg ${
+                className={` rounded-[1.5rem] w-full lg:w-[80%] aspect-video object-fill object-top shadow-lg cursor-pointer pointer-events-auto ${
                   imgNext == index ? "block" : "hidden"
                 }`}
                 // loading="lazy"
                 alt={`${title}`}
                 id="img"
+                // onDoubleClick={() => openViewer(images, imgNext, setImgNext)}
+                onClick={() => openViewer(images, imgNext, setImgNext)}
               />
             );
           })}

@@ -1,52 +1,54 @@
 import { contacto } from "../../utilities/contacto";
+import BotonWP from "./botonWP";
 import Formulario from "./formulario";
 
 const Contact = () => {
-    return (
-        <div
-            id="effect"
-            className=" h-full sm:w-[100%] w-[90%] sm:p-10 p-0  flex flex-col justify-start items-center sm:gap-0 gap-10 "
-        >
-            <div className=" flex-grow w-full h-full flex flex-row justify-center items-center">
-                <Formulario />
-            </div>
-            <div className=" w-full flex-grow-0 flex flex-row flex-wrap justify-center items-end gap-10">
-                {contacto.map((item, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className=" sm:w-auto w-full flex justify-center items-center gap-3"
-                        >
-                            {/* icon */}
-                            <div
-                                id="icon"
-                                className="sm:min-w-10 sm:h-10 min-w-10 h-10 grid place-items-center rounded-xl"
-                            >
-                                <div className="h-[50px] w-[50px] p-[6px] flex flex-col justify-center items-center  ">
-                                    {item.icon}
-                                </div>
-                            </div>
-
-                            <div className=" w-full flex flex-col justify-center items-start text-gray-300 h-[50px]  ">
-                                <p
-                                    title={item.title}
-                                    className="text-sm font-semibold  text-gray-300 space-nowrap truncate"
-                                >
-                                    {item.title}
-                                </p>
-                                <p
-                                    title={item.text}
-                                    className="  w-[100%] font-bold text-md  text-gray-300 space-nowrap "
-                                >
-                                    {item.text}
-                                </p>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
-    );
+  return (
+    <div
+      id="effect"
+      className="min-h-screen w-full px-4 sm:px-8 lg:px-16 py-12 flex flex-col justify-center items-center"
+    >
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row justify-center items-center lg:items-start gap-10">
+        <FooterContact />
+        <Formulario />
+      </div>
+    </div>
+  );
 };
 
 export default Contact;
+
+function FooterContact() {
+  return (
+    <div className="w-full lg:w-80 flex flex-col justify-center items-stretch gap-4">
+      {contacto.map((item, index) => {
+        return (
+          <div
+            key={index}
+            className="flex items-center gap-4 bg-[#1a1a22] px-5 py-4 rounded-2xl border border-white/5 shadow-lg"
+          >
+            <div className="min-w-[40px] h-[40px] flex justify-center items-center">
+              {item.icon}
+            </div>
+            <div className="flex flex-col justify-center items-start text-gray-300">
+              <p
+                title={item.title}
+                className="text-xs font-semibold text-gray-400 uppercase tracking-wider"
+              >
+                {item.title}
+              </p>
+              <p
+                title={item.text}
+                className="font-bold text-sm text-gray-200 whitespace-pre-line"
+              >
+                {item.text}
+              </p>
+            </div>
+          </div>
+        );
+      })}
+
+      <BotonWP />
+    </div>
+  );
+}
