@@ -484,3 +484,33 @@ input[id="3"]:checked + #MenuTitle {
 .scale_reverse {
   opacity: 0;
 }
+
+/* Animación para dibujar y rellenar SVG (Foco) */
+.draw-svg-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-and-fill 4s ease-in-out infinite;
+}
+
+@keyframes draw-and-fill {
+  0% {
+    stroke-dashoffset: 1;
+    fill: transparent;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: #c2cf09c7; /* color del foco */
+  }
+  80% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 1;
+    fill: transparent;
+  }
+}

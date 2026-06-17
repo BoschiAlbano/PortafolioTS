@@ -11,8 +11,6 @@ import {
 import { Cards } from "../../utilities/project";
 import { card } from "../../model/projects";
 import useNerScreen from "@/hook/useNerScreen";
-import { u } from "framer-motion/client";
-import { set } from "zod";
 
 const Proyect = () => {
   return (
@@ -23,7 +21,7 @@ const Proyect = () => {
         return (
           <div
             key={index}
-            className={`w-full sm:px-[5%] h-full flex flex-col justify-center items-center `}
+            className={`w-full sm:px-[5%] h-full flex flex-col justify-center items-center px-[3%] `}
           >
             <TiltCard card={item} izq={index % 2 === 0} />
           </div>
@@ -110,7 +108,7 @@ const TiltCard = ({ card, izq }: { card: card; izq: boolean }) => {
               <img
                 key={index}
                 src={`${img}`}
-                className={` rounded-[1.5rem] w-full lg:w-[80%] aspect-video object-contain object-top shadow-lg ${
+                className={` rounded-[1.5rem] w-full lg:w-[80%] aspect-video object-fill object-top shadow-lg ${
                   imgNext == index ? "block" : "hidden"
                 }`}
                 // loading="lazy"
